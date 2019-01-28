@@ -20,18 +20,18 @@ description: "Learn how to use the SharePoint admin center to manage storage and
 
 # Manage site collection storage limits
 
-The amount of SharePoint Online space your organization has is based on your number of users (see [SharePoint Online Limits](https://go.microsoft.com/fwlink/p/?LinkID=856113)). If you're a global admin in Office 365, you can [Change storage space for your subscription](/office365/admin/subscriptions-and-billing/add-storage-space) if you run out. 
+SharePoint Online allocates storage space based on the number of users in your organization (see [SharePoint Online Limits](https://go.microsoft.com/fwlink/p/?LinkID=856113)). Global admins in Office 365 can [Change storage space for your subscription](/office365/admin/subscriptions-and-billing/add-storage-space) if the limit has been reached. 
   
-## Use pooled storage
+## Using pooled storage
 <a name="__toc365547981"> </a>
 
-By default, your SharePoint storage is available in a central pool from which all sites can draw. You, as a global or SharePoint admin, don't need to divvy up storage space or reallocate space based on usage. That's all handled automatically: sites use what they need when they need it, up to a maximum of 25 terabyte (TB) per site collection. If you previously set storage limits manually and switch to using pooled storage, SharePoint resets all the limits to 1 TB. 
+By default, SharePoint storage is available in a central pool from which all sites can draw. Space reallocation is handled automatically: sites use what is needed up to a maximum of 25 terabyte (TB) per site collection. If  storage limits set manually are switched back to pooled storage, SharePoint resets all the limits to 1 TB. 
   
  **Manage storage limits automatically**
   
 1. Sign in to Office 365 as a global admin or SharePoint admin.
     
-2. Select the app launcher icon ![The app launcher icon in Office 365](media/e5aee650-c566-4100-aaad-4cc2355d909f.png) in the upper-left and choose **Admin** to open the Microsoft 365 admin center. (If you don't see the Admin tile, you don't have Office 365 administrator permissions in your organization.) 
+2. Select the app launcher icon ![The app launcher icon in Office 365](media/e5aee650-c566-4100-aaad-4cc2355d909f.png) in the upper-left and choose **Admin** to open the Microsoft 365 admin center. (If the Admin tile doesn't appear, check that you have Office 365 administrator permissions for your organization.) 
     
 3. In the left pane, choose **Admin centers** \> **SharePoint**.
     
@@ -46,16 +46,16 @@ By default, your SharePoint storage is available in a central pool from which al
 ## Manage individual site collection storage limits
 <a name="__toc365547981"> </a>
 
-If you prefer to fine tune the storage space allocated to each site collection, you can set your storage management option to "manual" and specify individual site collection storage limits. In this case, we recommend that you also set an email alert so that you and other site collection admins can be notified when site collections are nearing the storage limit.
+To specify individual site collection storage limits, set the storage management option to "manual." If you do, set an email alert so that all collection admins are notified when site collections near the storage limit.
   
 > [!IMPORTANT]
-> SharePoint Online storage is now calculated in gigabytes (GB). For more info, see [How SharePoint storage is calculated](manage-site-collection-storage-limits.md#storagecalculation). 
+> SharePoint Online storage is now calculated in gigabytes (GB). For more information, see [How SharePoint storage is calculated](manage-site-collection-storage-limits.md#storagecalculation). 
   
  **Manage storage limits manually**
   
 1. Sign in to Office 365 as a global admin or SharePoint admin.
     
-2. Select the app launcher icon ![The app launcher icon in Office 365](media/e5aee650-c566-4100-aaad-4cc2355d909f.png) in the upper-left and choose **Admin** to open the Microsoft 365 admin center. (If you don't see the Admin tile, you don't have Office 365 administrator permissions in your organization.) 
+2. Select the app launcher icon ![The app launcher icon in Office 365](media/e5aee650-c566-4100-aaad-4cc2355d909f.png) in the upper-left and choose **Admin** to open the Microsoft 365 admin center. (If the Admin tile doesn’t appear, check that you have Office 365 administrator permissions for your organization.) 
     
 3. In the left pane, choose **Admin centers** \> **SharePoint**.
     
@@ -69,7 +69,7 @@ If you prefer to fine tune the storage space allocated to each site collection, 
   
 1. Sign in to Office 365 as a global admin or SharePoint admin.
     
-2. Select the app launcher icon ![The app launcher icon in Office 365](media/e5aee650-c566-4100-aaad-4cc2355d909f.png) in the upper-left and choose **Admin** to open the Microsoft 365 admin center. (If you don't see the Admin tile, you don't have Office 365 administrator permissions in your organization.) 
+2. Select the app launcher icon ![The app launcher icon in Office 365](media/e5aee650-c566-4100-aaad-4cc2355d909f.png) in the upper-left and choose **Admin** to open the Microsoft 365 admin center. (If the Admin tile doesn’t appear, check that you have Office 365 administrator permissions for your organization.) 
     
 3. In the left pane, choose **Admin centers** \> **SharePoint**.
     
@@ -92,9 +92,11 @@ If you prefer to fine tune the storage space allocated to each site collection, 
     
 ### Monitor site collection storage limits by using Microsoft PowerShell
 
-If you manage storage limits manually, you need to regularly monitor them to make sure they aren't affecting site performance. We recommend that you also set up your own alert emails to notify site collection admins before a site collection reaches the limit. The built-in storage quota warning emails are typically sent weekly to site collections that have reached the specified warning level. So site collection admins often receive the storage quota warning email too late. For example, if the Disk Quota Warning timer job (which triggers the warning email) is scheduled weekly and sends the email warning every Sunday, but a site collection reaches the quota warning limit on Monday, the site collection admin doesn't receive the alert email for 6 days. There is a chance that this site collection can reach the maximum storage limit before the site collection admin receives the alert email. This could cause the site collection to be set to read-only and stop production.
+If storage limits are managed manually, they will need to be regularly monitored to make sure they aren't affecting site performance. Alert emails should be created to notify site collection admins before a site collection reaches the limit. Built-in storage quota warning emails are typically sent weekly to site collections that have reached the specified warning level, meaning that site collection admins often receive the storage quota warning email too late. 
+
+For example, if the Disk Quota Warning timer job (which triggers the warning email) is scheduled weekly and sends the email warning every Sunday, but a site collection reaches the quota warning limit on Monday, the site collection admin doesn't receive the alert email for 6 days. If the site collection reaches the maximum storage limit, the site collection could be set to read-only and stop production.
   
-You can use the following PowerShell script to monitor your site collections. This script pulls the data, composes, and then sends a storage warning alerts to the site collection administrator.
+PowerShell scripts can monitor site collections. The following script pulls the data, composes a storage warning alert, and then sends it to the site collection administrator.
   
 1. [Download the latest SharePoint Online Management Shell](https://go.microsoft.com/fwlink/p/?LinkId=255251).
     
@@ -139,7 +141,7 @@ You can use the following PowerShell script to monitor your site collections. Th
 ## How SharePoint storage is calculated
 <a name="storagecalculation"> </a>
 
-Previously, SharePoint storage was calculated in megabytes (MB). Now it's calculated in gigabytes (GB) using only full integers. If you previously set your storage quota in MB, it will be converted to GB (1024 MB=1 GB) and rounded down to the nearest integer. So a value of 5000 MB becomes 4 GB. A minimum of 1 GB can be set per site collection. If you set your SharePoint storage quota by using PowerShell, that value will be rounded up to the nearest integer GB to prevent a value of less than one GB turning into 0 GB.
+SharePoint storage was previously calculated in megabytes (MB). It's now calculated in gigabytes (GB) using only full integers. If you previously set your storage quota in MB, it will be converted to GB (1024 MB=1 GB) and rounded down to the nearest integer. So a value of 5000 MB becomes 4 GB (5000 / 1024 = 4.883). A minimum of 1 GB can be set per site collection. If you set your SharePoint storage quota by using PowerShell, that value will be rounded up to the nearest integer GB to prevent a value of less than one GB turning into 0 GB.
   
 ## See also
 <a name="storagecalculation"> </a>
