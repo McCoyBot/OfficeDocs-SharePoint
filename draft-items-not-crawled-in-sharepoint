@@ -1,0 +1,39 @@
+---
+title: "Manage user profiles in the SharePoint admin center"
+ms.author: kaarins
+author: kaarins
+manager: pamgreen
+ms.date: 5/22/2018
+ms.audience: Admin
+ms.topic: article
+f1_keywords:
+- 'ViewUserProfiles'
+- 'SPOTAMgUserProfiles'
+ms.service: sharepoint-online
+localization_priority: Normal
+search.appverid:
+- SPO160
+- MOE150
+- BSA160
+- GSP150
+- MET150
+ms.assetid: 494bec9c-6654-41f0-920f-f7f937ea9723
+description: "Learn how to use the SharePoint admin center to create and edit custom user properties, add and remove admins on OneDrive accounts, manage audiences, and disable OneDrive creation."
+---
+# Draft items are not crawled in SharePoint
+
+## Symptom
+
+Microsoft SharePoint is not crawling the draft items to return in search results.
+
+## Cause
+
+By default SharePoint only crawls major versions of files and draft items are only viewable by their creators. SharePoint is behaving as expected out of box.
+
+## Resolution
+
+This behavior can be altered in **Document Library Settings** -> **Versioning Settings** -> **Draft Item Security**
+
+Select the option **Any user who can read items**. 
+
+This will allow all users to see draft items including the crawling account.
